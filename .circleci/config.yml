@@ -59,6 +59,8 @@ jobs:
           name: Build and run tests
           no_output_timeout: 35m
           command: |
+            git submodule sync
+            git submodule update --init
             make
       - clear_environment:
           cache_key: shade-stable-cache
@@ -74,7 +76,10 @@ jobs:
       - run:
           name: Check style
           no_output_timeout: 35m
-          command: cargo +nightly fmt --all -- --check
+          command: |
+            git submodule sync
+            git submodule update --init
+            cargo +nightly fmt --all -- --check
       - clear_environment:
           cache_key: shade-fmt-cache
 
@@ -89,7 +94,10 @@ jobs:
       - run:
           name: Check style
           no_output_timeout: 35m
-          command: cargo +nightly clippy --workspace --all-targets
+          command: |
+            git submodule sync
+            git submodule update --init
+            cargo +nightly clippy --workspace --all-targets
       - clear_environment:
           cache_key: shade-clippy-cache
 
