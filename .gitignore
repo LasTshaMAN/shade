@@ -18,6 +18,9 @@ contracts/hackatom/hash.txt
 # Auto-gen
 .cargo-ok
 
+# Tests artifacts
+packages/network_integration/tx_to_sign
+
 *.pyc
 __pycache__/
 compiled
