@@ -51,8 +51,6 @@ jobs:
   tests:
     docker:
       - image: cimg/rust:1.56.1
-    resource_class: 2xlarge
-    parallelism: 20
     steps:
       - checkout
       - set_up_environment:
@@ -68,7 +66,6 @@ jobs:
   fmt:
     docker:
       - image: cimg/rust:1.56.1
-    resource_class: 2xlarge
     steps:
       - checkout
       - install_rust_nightly
@@ -84,7 +81,6 @@ jobs:
   clippy:
     docker:
       - image: cimg/rust:1.56.1
-    resource_class: 2xlarge
     steps:
       - checkout
       - install_rust_nightly
