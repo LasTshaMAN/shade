@@ -30,6 +30,7 @@ clean:
 
 # TODO - maybe rename (or create separate cmd) for setting up deps (even to just run `make` to build contracts)
 test_integration_docker:
+	# TODO - need to run dev net in Docker as well
 	docker build -f dev.Dockerfile -t shade-dev-env .
 	docker run --rm -it -v $(pwd):/home --entrypoint bash shade-dev-env
 	# TODO - do we need to run it here ? or have a separate make command for it ?
