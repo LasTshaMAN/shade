@@ -20,7 +20,6 @@ all: setup $(CONTRACTS); $(call build_wasm,snip20,snip20_reference_impl)
 $(CONTRACTS):
 	$(call build_wasm,$@,$@)
 
-
 setup: $(compiled_dir) $(checksum_dir)
 
 $(compiled_dir) $(checksum_dir):
@@ -28,3 +27,11 @@ $(compiled_dir) $(checksum_dir):
 
 clean:
 	rm -r $(CONTRACTS)
+
+test_integration_docker:
+	docker build -f dev.Dockerfile -t shade-dev-env .
+	docker run --rm -it -v $(pwd):/home --entrypoint bash shade-dev-env
+	make
+
+# TODO
+up:
