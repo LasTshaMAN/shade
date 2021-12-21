@@ -28,10 +28,9 @@ $(compiled_dir) $(checksum_dir):
 clean:
 	rm -r $(CONTRACTS)
 
+# TODO - maybe rename (or create separate cmd) for setting up deps (even to just run `make` to build contracts)
 test_integration_docker:
 	docker build -f dev.Dockerfile -t shade-dev-env .
 	docker run --rm -it -v $(pwd):/home --entrypoint bash shade-dev-env
-	make
-
-# TODO
-up:
+	# TODO - do we need to run it here ? or have a separate make command for it ?
+	#cargo test -- --nocapture --test-threads=1
